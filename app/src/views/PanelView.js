@@ -118,6 +118,5 @@ define(function(require, exports, module) {
         }.bind(this));
     }
 
-
     module.exports = PanelView;
 });
