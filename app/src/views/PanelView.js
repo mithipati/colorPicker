@@ -37,7 +37,6 @@ define(function(require, exports, module) {
             indicatorSize: [700, 30],
             labelSize: [700, 30],
             label: 'Click and Drag to change'
-            // fillColor: 'rgba(50,200,100,1)'
         }
     };
 

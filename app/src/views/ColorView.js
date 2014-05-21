@@ -22,6 +22,7 @@ define(function(require, exports, module) {
 
         this.mainNode = this.add(this.rootModifier);
 
+        // Colors of ColorDisplay
         this.red = 0;
         this.green = 0;
         this.blue = 0;

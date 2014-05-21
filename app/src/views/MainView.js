@@ -19,12 +19,15 @@ define(function(require, exports, module) {
 
         _addColorView.call(this);
 
+        // Add all three output surfaces
         _rgbSurface.call(this);
         _hexSurface.call(this);
         _hsbSurface.call(this);
 
+        // Add famo.us logo
         _createLogo.call(this);
 
+        // Change output surfaces based slider movements
         _setColorOutput.call(this);
     }
 
