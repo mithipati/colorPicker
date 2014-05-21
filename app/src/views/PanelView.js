@@ -93,7 +93,8 @@ define(function(require, exports, module) {
             blue: [blueModifier, this.blueSlider]
         };
 
-        for (var slider in sliders) {
+        for (var slider in sliders)
+        {
             var currentModifier = sliders[slider][0];
             var currentSlider = sliders[slider][1];
 

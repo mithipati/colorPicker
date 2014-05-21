@@ -26,12 +26,26 @@ define(function(require, exports, module) {
         this.green = 0;
         this.blue = 0;
 
+        _addPanelView.call(this);
+        _createColorDisplay.call(this);
+    }
+
+    ColorView.prototype = Object.create(View.prototype);
+    ColorView.prototype.constructor = ColorView;
+
+    ColorView.DEFAULT_OPTIONS = {
+        size: [undefined, 500]
+    };
+
+    function _addPanelView() {
         var panelView = new PanelView();
 
         this.add(panelView);
 
         this.subscribe(panelView);
+    }
 
+    function _createColorDisplay() {
         var colorDisplay = new Surface({
             properties: {
                 backgroundColor: 'rgb('+this.red+','+this.green+','+this.blue+')'
@@ -51,12 +65,14 @@ define(function(require, exports, module) {
         }.bind(this));
     }
 
-    ColorView.prototype = Object.create(View.prototype);
-    ColorView.prototype.constructor = ColorView;
+    function _colorToHex(c) {
+        var hex = c.toString(16);
+        return hex.length == 1 ? "0" + hex : hex;
+    }
 
-    ColorView.DEFAULT_OPTIONS = {
-        size: [undefined, 500]
-    };
+    function _rgbToHex(r, g, b) {
+        return '#' + _colorToHex(r) + _colorToHex(g) + _colorToHex(b);
+    }
 
     module.exports = ColorView;
 });
