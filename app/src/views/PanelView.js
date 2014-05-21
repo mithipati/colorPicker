@@ -18,15 +18,11 @@ define(function(require, exports, module) {
 
         this.rootModifier = new StateModifier({
             size: this.options.size,
-            origin: [1, 1],
-            properties: {
-                zIndex: 2
-            }
+            origin: [1, 1]
         });
 
         this.mainNode = this.add(this.rootModifier);
 
-        // _createBackground.call(this);
         _createPanel.call(this);
         _createSliders.call(this);
     }
@@ -44,22 +40,23 @@ define(function(require, exports, module) {
         }
     };
 
-    // function _createBackground() {
-    //     var background = new Surface({
-    //         properties: {
-    //             backgroundColor: 'gray'
-    //         }
-    //     });
-
-    //     this.mainNode.add(background);
-    // }
-
     function _createPanel() {
         this.panel = new Surface({
-            // size: [800, 200],
             properties: {
-                backgroundColor: 'gray'
-                // borderRadius: '2rem'
+                backgroundColor: 'rgb(49,49,49)'
+            }
+        });
+
+        var panelTitle = new Surface({
+            size: [100, 100],
+            content: 'Control\nPanel',
+            properties: {
+                color: 'white',
+                fontSize: '3rem',
+                fontWeight: 'bold',
+                fontFamily: 'Open Sans, sans-serif',
+                marginTop: '2rem',
+                marginLeft: '3rem'
             }
         });
 
@@ -68,6 +65,7 @@ define(function(require, exports, module) {
         });
 
         this.mainNode.add(panelModifier).add(this.panel);
+        this.mainNode.add(panelTitle);
     }
 
     function _createSliders() {
