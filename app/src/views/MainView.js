@@ -58,11 +58,10 @@ define(function(require, exports, module) {
         var logo = new ImageSurface({
             size: [100, 100],
             content: '/content/images/famous_logo.png',
-            classes: ['backfaceVisibility'],
             properties: {
                 zIndex: 1,
                 marginTop: '1rem',
-                marginLeft: '-1rem'
+                marginLeft: '-1rem',
             }
         });
 
@@ -102,8 +101,8 @@ define(function(require, exports, module) {
     function _setColorOutput() {
         this._eventInput.on('updateOutput', function (data) {
             this.rgbSurface.setContent(data.rgb);
-            this.hexSurface.setContent(data.hex);
-            this.hsbSurface.setContent(data.hsb);
+            this.hexSurface.setContent('Hex: ' + data.hex);
+            this.hsbSurface.setContent('(H, S, B)\n'+ '(' + data.hsb + ')');
         }.bind(this));
     }
 

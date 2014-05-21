@@ -37,6 +37,7 @@ define(function(require, exports, module) {
             indicatorSize: [700, 30],
             labelSize: [700, 30],
             label: 'Click and Drag to change'
+            // fillColor: 'rgba(50,200,100,1)'
         }
     };
 
@@ -70,8 +71,13 @@ define(function(require, exports, module) {
 
     function _createSliders() {
         this.redSlider = new Slider(this.options.sliderOpts);
+        this.redSlider.setOptions({ fillColor: 'rgba(255,0,0,1)'});
+
         this.greenSlider = new Slider(this.options.sliderOpts);
+        this.greenSlider.setOptions({ fillColor: 'rgba(0,255,0,1)'});
+
         this.blueSlider = new Slider(this.options.sliderOpts);
+        this.blueSlider.setOptions({ fillColor: 'rgba(0,0,255,1)'});
 
         var redModifier = new StateModifier({
             origin: [0.25, 0.33]

@@ -1,8 +1,6 @@
-html {
-  background: #fff;
+.slider-label {
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  font-weight: bold;
 }
 
-.backfaceVisibility {
-  -webkit-backface-visibility: visible;
-  backface-visibility: visible;
-}
