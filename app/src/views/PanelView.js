@@ -75,20 +75,20 @@ define(function(require, exports, module) {
         var greenSlider = new Slider(this.options.sliderOpts);
         var blueSlider = new Slider(this.options.sliderOpts);
 
-        // redSlider.on('change', function () {
-        //     var value = Math.floor(redSlider.get());
-        //     this._eventOutput.emit('updateRed', {value: value});
-        // }.bind(this));
+        redSlider.on('change', function () {
+            var value = Math.floor(redSlider.get());
+            this._eventOutput.emit('updateRed', {value: value});
+        }.bind(this));
 
-        // greenSlider.on('change', function () {
-        //     var value = Math.floor(greenSlider.get());
-        //     this._eventOutput.emit('updateGreen', {value: value});
-        // }.bind(this));
+        greenSlider.on('change', function () {
+            var value = Math.floor(greenSlider.get());
+            this._eventOutput.emit('updateGreen', {value: value});
+        }.bind(this));
 
-        // blueSlider.on('change', function () {
-        //     var value = Math.floor(blueSlider.get());
-        //     this._eventOutput.emit('updateBlue', {value: value});
-        // }.bind(this));
+        blueSlider.on('change', function () {
+            var value = Math.floor(blueSlider.get());
+            this._eventOutput.emit('updateBlue', {value: value});
+        }.bind(this));
 
         var redModifier = new StateModifier({
             origin: [0.25, 0.33]
