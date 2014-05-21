@@ -40,32 +40,14 @@ define(function(require, exports, module) {
 
         this.mainNode.add(colorDisplay);
 
-        // this._eventInput.on('updateRed updateGreen updateBlue', function (data){
-        //     this._eventOutput.emit('colorChange', {
-
-        //     });
-        // });
-
-        this._eventInput.on('updateRed', function (data){
-            this.red = data.value;
+        this._eventInput.on('colorChange', function (data) {
+            this.red = data.redValue;
+            this.green = data.greenValue;
+            this.blue = data.blueValue;
             colorDisplay.setProperties({
                 backgroundColor: 'rgb('+this.red+','+this.green+','+this.blue+')'
             });
-            this._eventOutput.emit('redChanged', { color: this.red });
-        }.bind(this));
-
-        this._eventInput.on('updateGreen', function (data){
-            this.green = data.value;
-            colorDisplay.setProperties({
-                backgroundColor: 'rgb('+this.red+','+this.green+','+this.blue+')'
-            });
-        }.bind(this));
-
-        this._eventInput.on('updateBlue', function (data){
-            this.blue = data.value;
-            colorDisplay.setProperties({
-                backgroundColor: 'rgb('+this.red+','+this.green+','+this.blue+')'
-            });
+            // this._eventOutput.emit('updateOutput')
         }.bind(this));
     }
 

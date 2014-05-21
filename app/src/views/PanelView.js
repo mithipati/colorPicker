@@ -71,24 +71,9 @@ define(function(require, exports, module) {
     }
 
     function _createSliders() {
-        var redSlider = new Slider(this.options.sliderOpts);
-        var greenSlider = new Slider(this.options.sliderOpts);
-        var blueSlider = new Slider(this.options.sliderOpts);
-
-        redSlider.on('change', function () {
-            var value = Math.floor(redSlider.get());
-            this._eventOutput.emit('updateRed', {value: value});
-        }.bind(this));
-
-        greenSlider.on('change', function () {
-            var value = Math.floor(greenSlider.get());
-            this._eventOutput.emit('updateGreen', {value: value});
-        }.bind(this));
-
-        blueSlider.on('change', function () {
-            var value = Math.floor(blueSlider.get());
-            this._eventOutput.emit('updateBlue', {value: value});
-        }.bind(this));
+        this.redSlider = new Slider(this.options.sliderOpts);
+        this.greenSlider = new Slider(this.options.sliderOpts);
+        this.blueSlider = new Slider(this.options.sliderOpts);
 
         var redModifier = new StateModifier({
             origin: [0.25, 0.33]
@@ -103,18 +88,35 @@ define(function(require, exports, module) {
         });
 
         var sliders = {
-            red: [redModifier, redSlider],
-            green: [greenModifier, greenSlider],
-            blue: [blueModifier, blueSlider]
+            red: [redModifier, this.redSlider],
+            green: [greenModifier, this.greenSlider],
+            blue: [blueModifier, this.blueSlider]
         };
 
         for (var slider in sliders) {
             var currentModifier = sliders[slider][0];
             var currentSlider = sliders[slider][1];
 
+            _emitColorChange.call(this, currentSlider);
+
             this.mainNode.add(currentModifier).add(currentSlider);
         }
     }
+
+    function _emitColorChange (slider) {
+        slider.on('change', function () {
+            var redValue = Math.floor(this.redSlider.get());
+            var greenValue = Math.floor(this.greenSlider.get());
+            var blueValue = Math.floor(this.blueSlider.get());
+
+            this._eventOutput.emit('colorChange', {
+                redValue: redValue,
+                greenValue: greenValue,
+                blueValue: blueValue
+            });
+        }.bind(this));
+    }
+
 
     module.exports = PanelView;
 });
